@@ -1,0 +1,41 @@
+.meal{
+    border: 1px solid goldenrod;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    width: 300px;
+    
+
+}
+.mealName{
+    font-size: 45px;
+    color: magenta;
+
+}
+#meals{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    padding: 10px;
+    text-align: justify;
+}
+.search{
+    text-align: center;
+    height: 100px;
+    margin-top: 20px;
+    
+}
+.input-field{
+    background-color: rgb(145, 160, 155);
+    padding: 10px;
+    border: 1px solid rgb(37, 31, 30);
+    border-radius: 10px;   
+}
+.btn{
+    padding: 10px;
+    border: 1px solid rgb(37, 31, 30);
+    border-radius: 10px;  
+}
+.btn:hover {
+    cursor: pointer;
+}
