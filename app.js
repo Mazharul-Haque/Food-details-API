@@ -1,4 +1,4 @@
-fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=b')
+fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
     .then(res => res.json())
     .then(data => displayMeals(data.meals))
 
@@ -21,5 +21,13 @@ const displayMeals = meals => {
         mealCotainer.appendChild(mealDiv);
 
     });   
+
+}
+const searchMeal = () =>{
+    const searchText = document.getElementById('searchBox').value;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=${searchText}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data))
 
 }
