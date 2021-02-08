@@ -3,7 +3,7 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
     .then(data => displayMeals(data.meals))
 
 const displayMeals = meals => {
-    const mealCotainer = document.getElementById('meals');
+    const mealContainer = document.getElementById('meals');
     meals.forEach(meal => {
         //const meal = meals[i];
         const mealDiv = document.createElement('div');
@@ -18,16 +18,25 @@ const displayMeals = meals => {
             <p  class="ingredient">${meal.strIngredient4} </p>
         `;
         mealDiv.innerHTML = mealInfo;
-        mealCotainer.appendChild(mealDiv);
+        mealContainer.appendChild(mealDiv);
 
-    });   
+    });
 
 }
-const searchMeal = () =>{
+const searchMeal = () => {
     const searchText = document.getElementById('searchBox').value;
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=${searchText}`
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
     fetch(url)
-    .then(res => res.json())
-    .then(data => console.log(data))
+        .then(res => res.json())
+        .then(data => displayFood(data.meals))
+}
+const displayFood = foods => {
+    const mealContainer = document.getElementById('meal-container');
+    
+    foods.forEach(food =>{
+        const li = document.createElement('li');
+        li.innerText = food.strMeal;
+        mealContainer.appendChild(li);
 
+    })
 }
