@@ -32,8 +32,8 @@ const searchMeal = () => {
 }
 const displayFood = foods => {
     const mealContainer = document.getElementById('meal-container');
-    
-    foods.forEach(food =>{
+
+    foods.forEach(food => {
         const divMeal = document.createElement('div');
         divMeal.className = 'single-result row align-items-center my-3 p-3';
         divMeal.innerHTML = `
@@ -44,16 +44,29 @@ const displayFood = foods => {
               <p >${food.strIngredient1}</p>
               <p >${food.strIngredient2}</p>
               <p >${food.strIngredient3}</p>
-              <p >${food.strIngredient4}</p>              
-              
+              <p >${food.strIngredient4}</p>                          
           </div>
           <div class="col-md-3 text-md-right text-center">
-              <button class="btn btn-success">Get Meal</button>
-          </div>
-        
+              <button onclick="getTheMeal('${food.strMeal}','${food.strCategory}',
+                '${food.strIngredient1}','${food.strIngredient2}','${food.strIngredient3}',
+                '${food.strIngredient4}')"
+                 class="btn btn-success">Get the Meal</button>
+          </div>      
         `
         //li.innerText = food.strMeal;
         mealContainer.appendChild(divMeal);
 
     })
+}
+const getTheMeal = (mealName, mealCategory, masala1, masala2, masala3, masala4) => {
+    const secondUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${strMeal},
+   ${strCategory},${strIngredient1},${strIngredient2},${strIngredient3},${strIngredient4}`
+    fetch(secondUrl)
+        .then(res => res.json())
+        .then(data => displayMealDetails(data.meals))
+}
+const displayMealDetails = details => {
+    const detailsDiv = document.getElementById('mealDetails');
+    detailsDiv.innerText = details;
+
 }
