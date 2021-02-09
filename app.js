@@ -34,9 +34,26 @@ const displayFood = foods => {
     const mealContainer = document.getElementById('meal-container');
     
     foods.forEach(food =>{
-        const li = document.createElement('li');
-        li.innerText = food.strMeal;
-        mealContainer.appendChild(li);
+        const divMeal = document.createElement('div');
+        divMeal.className = 'single-result row align-items-center my-3 p-3';
+        divMeal.innerHTML = `
+        <div class="col-md-9">
+        
+              <h3 >${food.strMeal}</h3>
+              <p >${food.strCategory}</p>
+              <p >${food.strIngredient1}</p>
+              <p >${food.strIngredient2}</p>
+              <p >${food.strIngredient3}</p>
+              <p >${food.strIngredient4}</p>              
+              
+          </div>
+          <div class="col-md-3 text-md-right text-center">
+              <button class="btn btn-success">Get Meal</button>
+          </div>
+        
+        `
+        //li.innerText = food.strMeal;
+        mealContainer.appendChild(divMeal);
 
     })
 }
